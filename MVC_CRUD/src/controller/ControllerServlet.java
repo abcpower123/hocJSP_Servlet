@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sun.media.jfxmedia.track.Track.Encoding;
 
@@ -26,8 +27,14 @@ public class ControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		bd=new BookDAO();
 		String action=request.getServletPath();
+		System.out.println(action);
 		try {
 			switch (action) {
+			case "/logout":
+				HttpSession session=request.getSession();
+				session.setAttribute("login", false);
+				response.sendRedirect("Login.jsp");
+				break;
 			case "/new":
 				showNewForm(request,response);
 				break;

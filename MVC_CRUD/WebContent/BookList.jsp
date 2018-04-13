@@ -38,6 +38,11 @@
 			</c:forEach>
 		</table>
 	</div>
+	<form action="logout">
+	
+	<input type="submit" value="Logout" >
+	
+	</form>
 </body>
 </html>
 

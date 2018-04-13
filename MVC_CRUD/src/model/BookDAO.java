@@ -106,4 +106,18 @@ public class BookDAO {
 		disconnect();
 		return b;
 	}
+	public boolean checklogin(String user, String pass) throws Exception {
+		connect();
+		
+		PreparedStatement ps=jdbcConnection.prepareStatement("Select * from [Bookstore].[dbo].[User] where username=? and password=?");
+		ps.setString(1, user);
+		ps.setString(2, pass);
+		ResultSet rs=ps.executeQuery();
+		
+		if(rs.next()) {
+			disconnect();
+			return true;
+		}
+		else {disconnect();return false;}
+	}
 }
