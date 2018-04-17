@@ -27,7 +27,7 @@ public class ControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		bd=new BookDAO();
 		String action=request.getServletPath();
-		System.out.println(action);
+		System.out.println(action+" a");
 		try {
 			switch (action) {
 			case "/logout":
@@ -51,6 +51,8 @@ public class ControllerServlet extends HttpServlet {
 				updateBook(request,response);
 				break;
 			default:
+				if(action.equals("css/NewFile.css")) return;
+				else
 				listBook(request,response);
 				break;
 			}

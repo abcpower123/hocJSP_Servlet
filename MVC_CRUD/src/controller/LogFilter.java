@@ -93,7 +93,7 @@ public class LogFilter extends HttpServlet implements Filter {
 			boolean a=(boolean) session.getAttribute("login");
 			if(a==false) dologin(rq,rs);
 			else {
-			System.out.println(rq.getServletPath());
+			
 			
 			if(rq.getServletPath().equals("/Login.jsp")) rs.sendRedirect("list");
 			else chain.doFilter(request, response);
